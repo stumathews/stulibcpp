@@ -1,7 +1,13 @@
 #ifndef LIBSTUCPP_H
 #define LIBSTUCPP_H
 
-#define LIBRARY_API	__declspec(dllexport)
+#ifdef _WIN32
+#define LIBRARY_API __declspec(dllexport)
+#endif
+
+#ifndef LIBRARY_API
+# define LIBRARY_API    extern
+#endif
 
 #ifdef __cplusplus
 extern "C" {
