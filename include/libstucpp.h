@@ -13,4 +13,11 @@ LIBRARY_API void test();
 }
 #endif
 
+class TestClass
+{
+public:
+	TestClass(){}
+	LIBRARY_API void one();
+};
+
 #endif
