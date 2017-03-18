@@ -58,4 +58,4 @@ case "$host_os" in
 ;;
 esac
 
-AC_OUTPUT(Makefile src/Makefile)
+AC_OUTPUT(Makefile src/Makefile tests/Makefile)
