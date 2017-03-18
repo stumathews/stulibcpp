@@ -1,5 +1,6 @@
 #ifndef LIBSTUCPP_H
 #define LIBSTUCPP_H
+#include <config.h>
 
 #ifdef _WIN32
 #define LIBRARY_API __declspec(dllexport)
