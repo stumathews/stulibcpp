@@ -1,3 +1,6 @@
+/* 
+* Basic header file for libstucpp 
+*/
 #ifndef LIBSTUCPP_H
 #define LIBSTUCPP_H
 #include <config.h>
@@ -11,6 +14,10 @@
 #endif
 
 #ifdef __cplusplus
+
+// Note: This allows names to be exported as-is as thus callable from various compilers
+// if not in a Extern C block, named are exported mangabled in a compiler specific way
+// meaning only those compilers will be able to call those names/functions
 extern "C" {
 #endif
 
@@ -20,6 +27,7 @@ LIBRARY_API void test();
 }
 #endif
 
+// Example of a compiler specific manged name candidate(see http://www.mingw.org/wiki/sampledll):
 class TestClass
 {
 public:
