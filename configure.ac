@@ -5,6 +5,8 @@ AC_LIBTOOL_WIN32_DLL
 AM_INIT_AUTOMAKE([subdir-objects])
 LT_INIT
 AC_PROG_CXX
+AX_CXX_COMPILE_STDCXX_11(, optional)
+AC_CONFIG_MACRO_DIR([m4])
 LIBSTU_DLL_IMPORT=
 case "$host" in
 	*-*-cygwin | *-*-mingw )
