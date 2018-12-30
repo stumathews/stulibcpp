@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 # Define project name & version
 set(PROJECT_VERSION "1.3.0")
-set (CMAKE_CXX_STANDARD 98)
+set (CMAKE_CXX_STANDARD 11)
 
 project(stucpp VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 
@@ -57,6 +57,17 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
 endif()
 
 #Tests
+option (TESTS "Build tests" ON)
+if(TESTS)
+	enable_testing()
+	if(UNIX)
+		add_executable(cApiTest ./test/cAPI.cpp)
+	else()
+		add_executable(cApiTest ./test/cAPI_win.cpp)
+	endif()
+	target_link_libraries(cApiTest ${CMAKE_DL_LIBS} stucpp)
+	add_test(NAME "C_API" COMMAND cAPITest)
+endif()
 add_executable(basic ${CMAKE_CURRENT_SOURCE_DIR}/test/basic.cpp)
 target_link_libraries(basic stucpp ${CMAKE_DL_LIBS})
 
