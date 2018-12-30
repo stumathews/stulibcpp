@@ -56,6 +56,10 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
     target_compile_options(stucpp PRIVATE -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-newline-eof -Wno-padded -Wno-exit-time-destructors -Wno-global-constructors -Wno-constant-conversion)
 endif()
 
+#Always create this test
+add_executable(CppApiTest ${CMAKE_CURRENT_SOURCE_DIR}/test/basic.cpp)
+target_link_libraries(CppApiTest stucpp ${CMAKE_DL_LIBS})
+
 #Tests
 option (TESTS "Build tests" ON)
 if(TESTS)
@@ -65,11 +69,11 @@ if(TESTS)
 	else()
 		add_executable(CApiTest ./test/WinCApiTest.cpp)
 	endif()
+
 	target_link_libraries(CApiTest ${CMAKE_DL_LIBS} stucpp)
-	add_test(NAME "C_API" COMMAND cApiTest)
+	add_test(NAME "C_API" COMMAND CApiTest)
+	add_test(NAME "CPP_API" COMMAND CppApiTest)
 endif()
-add_executable(CppApiTest ${CMAKE_CURRENT_SOURCE_DIR}/test/basic.cpp)
-target_link_libraries(CppApiTest stucpp ${CMAKE_DL_LIBS})
 
 # Set output directory for the libraries & interactive binary. Tests go in build directory, except on windows because windows sucks my balls
 set(OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/output)
