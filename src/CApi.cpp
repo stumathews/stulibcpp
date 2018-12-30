@@ -1,3 +1,6 @@
+// CApi.cpp
+// Exposes the C interface of API. Note: Uses underlying C++ wrapper ApiClass to service calls.
+
 #include "stucpp_export.h"
 #include "ApiClass.h"
 #include <iostream>

@@ -1,3 +1,6 @@
+// ApiClass.cpp
+// Wrapper interface for all library functions. Called into by CApi
+
 #include "stucpp_export.h"
 #include "ApiClass.h"
 

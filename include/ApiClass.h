@@ -1,3 +1,5 @@
+// ApiClass.h
+// Interface for all API Calls
 #include "stucpp_export.h"
 
 class STUCPP_EXPORT ApiClass 

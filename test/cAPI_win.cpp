@@ -1,3 +1,6 @@
+// CApi_win.cpp
+// Uses C-Style GetProcAddress() to obtain functions in library
+
 #include <windows.h>
 #include <iostream>
 
@@ -9,7 +12,7 @@ int main() {
     HINSTANCE lib = LoadLibrary("stucpp.dll");
 
     if (lib == NULL) {
-        std::cerr << "cannot locate the .dll file" << std::endl;
+        std::cerr << "Cannot locate the .dll file" << std::endl;
         return 1;
     }
     INIT init = (INIT)GetProcAddress(lib, "initLib");

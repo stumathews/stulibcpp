@@ -1,11 +1,10 @@
+// basic.cpp
+// Basic smoke tests. Uses the C++ Classes in the library
+
 #include <iostream>
 #include "ApiClass.h"
 
 using namespace std;
-
-extern int sub(int,int);
-extern int closeLib();
-extern int initLib();
 
 int main(int argc, char** argv)
 {
