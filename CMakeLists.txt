@@ -33,6 +33,8 @@ target_sources(stucpp
 PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/ApiClass.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/CApi.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/3d.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/2d.cpp
   )
 
 include(GenerateExportHeader)
@@ -73,6 +75,15 @@ if(TESTS)
 	target_link_libraries(CApiTest ${CMAKE_DL_LIBS} stucpp)
 	add_test(NAME "C_API" COMMAND CApiTest)
 	add_test(NAME "CPP_API" COMMAND CppApiTest)
+	
+	add_executable(3DPointTests ${CMAKE_CURRENT_SOURCE_DIR}/test/3DPointTests.cpp)
+	target_link_libraries(3DPointTests ${CMAKE_DL_LIBS} stucpp)
+	add_test(NAME "3DPoint_Tests" COMMAND 3DPointTests)
+	
+	add_executable(2DPointTests ${CMAKE_CURRENT_SOURCE_DIR}/test/2DPointTests.cpp)
+	target_link_libraries(2DPointTests ${CMAKE_DL_LIBS} stucpp)
+	add_test(NAME "2DPoint_Tests" COMMAND 2DPointTests)
+
 endif()
 
 # Set output directory for the libraries & interactive binary. Tests go in build directory, except on windows because windows sucks my balls
