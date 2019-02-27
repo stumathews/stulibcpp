@@ -31,10 +31,11 @@ PROPERTIES
 
 target_sources(stucpp
 PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/ApiClass.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/CppApi.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/CApi.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/3d.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/2d.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Timing.cpp
   )
 
 include(GenerateExportHeader)

@@ -1,10 +1,11 @@
 #pragma once
 #include "stucpp_export.h"
 
+enum InDuration { Seconds, MilliSeconds, NanoSeconds };
 
 namespace Api {
 
-	enum InDuration { Seconds, MilliSeconds, NanoSeconds };
+	
 	class STUCPP_EXPORT Timing
 	{
 	public:

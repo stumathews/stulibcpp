@@ -3,10 +3,28 @@
 
 #include <windows.h>
 #include <iostream>
+#include "WinCApiTest.h"
+#include "Timing.h"
 
 typedef void* ( *INIT)();
 typedef void ( *END)();
 typedef int ( *SUB)(int,int);
+
+void callTimingFunctions(const HINSTANCE& lib)
+{		
+	GetMsDurationOf(lib);	
+}
+
+void GetMsDurationOf(const HINSTANCE & lib)
+{
+	
+	typedef double(*retDbl)(void (fn)(), InDuration);
+	retDbl func = (retDbl)GetProcAddress(lib, "GetDurationOfIn");
+	std::cout << "That took " << func([]() {
+		Sleep(1);
+		std::cout << "How fast did I run?" << std::endl;
+	}, MilliSeconds) << " miliseconds" << std::endl;
+}
 
 int main() {
     HINSTANCE lib = LoadLibrary("stucpp.dll");
@@ -25,6 +43,10 @@ int main() {
     }
     init();
 	std::cout << "sub(10,5) = " << sub(10,5) << std::endl;
+	
+	// Start testing
+	callTimingFunctions(lib);
+
     end();
     return 0;
 }
