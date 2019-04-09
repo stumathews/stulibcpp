@@ -15,7 +15,9 @@ namespace TwoDimensional
 }
 	float TwoDimensional::Point::GetStdSlope() const 
 	{
+		std::cout << "here " << std::endl;
 		float denominator = GetX();
-		if(denominator == 0 ) { throw std::exception(); };
+		std::cout << "got x " << std::endl;
+		if(denominator == 0 ) { throw std::exception("Can't devide by zero!"); };
 	       	return GetY() / denominator; 
 	};

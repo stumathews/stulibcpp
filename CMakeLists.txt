@@ -36,6 +36,7 @@ PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/3d.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/2d.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/Timing.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/StringApi.cpp
   )
 
 include(GenerateExportHeader)
@@ -60,7 +61,7 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
 endif()
 
 #Always create this test
-add_executable(CppApiTest ${CMAKE_CURRENT_SOURCE_DIR}/test/basic.cpp)
+add_executable(CppApiTest ${CMAKE_CURRENT_SOURCE_DIR}/test/CppApiTests.cpp)
 target_link_libraries(CppApiTest stucpp ${CMAKE_DL_LIBS})
 
 #Tests

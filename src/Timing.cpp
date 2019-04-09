@@ -9,7 +9,9 @@ using namespace std;
 	Determines how long the provided function ran for
 */
 
-double Api::Timing::GetTimeIn(void (*functionToMeasure)(), InDuration inDuration)
+typedef void(*VoidReturningFunctionWithNoArgs)(void (fn)());
+
+double Api::TimingApi::GetTimeIn(VoidReturningFunctionWithNoArgs functionToMeasure, InDuration inDuration)
 {
 	auto start = std::chrono::high_resolution_clock::now();
 	functionToMeasure();	

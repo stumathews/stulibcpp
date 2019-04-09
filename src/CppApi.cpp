@@ -5,28 +5,31 @@
 #include "ApiClass.h"
 #include "3d.h"
 #include <memory>
-
+#include <iostream>
+#include <ostream>
 using namespace Api;
+
+static int sequenceNumber = 0;
 
 
 CppApi::CppApi() 
-	: mTimingFunctionsPtr(new Timing()) { }
+	: TimingFunctions(TimingApi()) 
+{
+	
+	std::cout << sequenceNumber++ << " CppApi() called." <<  std::endl;
+}
 
-CppApi::~CppApi() {}
+CppApi::~CppApi() {
+	std::cout << sequenceNumber++ << " ~CppApi() called." << std::endl;
+}
  
-int CppApi::add(int a, int b)
-{
-	return a + b;
-}
+int CppApi::add(int a, int b) { return a + b; }
 
-int CppApi::sub(int a, int b )
-{
-	return a - b;
-}
+int CppApi::sub(int a, int b ) { return a - b; }
 
 
 double CppApi::GetDurationOfIn(void(*function)(), InDuration duration)
 {
-	return mTimingFunctionsPtr->GetTimeIn(function, duration);
+	return TimingFunctions.GetTimeIn(function, duration);
 }
 

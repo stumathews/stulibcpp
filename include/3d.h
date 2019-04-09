@@ -11,11 +11,19 @@ namespace ThreeDimensional
 	{
 		friend std::ostream& operator<<(std::ostream&, const ThreeDimensional::Point&);
 	public:
-		Point(): TwoDimensional::Point() {}
+		Point(): TwoDimensional::Point() 
+		{
+			std::cout << "ThreeDimensional::Point() called" << std::endl;
+		}
 		Point(float x, float y, float z) : TwoDimensional::Point(x, y), z(z) 
 		{
 			this->z = z;
 		};
+
+		~Point()
+		{
+			std::cout << "ThreeDimensional::Point~() called" << std::endl;
+		}
 	
 		float GetZ() const { return this->z; }
 		void SetZ(float z) { this->z = z; }
